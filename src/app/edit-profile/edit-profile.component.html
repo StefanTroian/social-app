@@ -1,8 +1,8 @@
 <div *ngIf="!busy" class="container">
     <div class="row justify-content-center mt-5">
-        <div class="col-md-2">
+        <div class="col">
             <input type="file" class="my-file-btn" #myFileBtn (change)="uploadProfileImg($event)" />
-            <img class="rounded-circle" (click)="updateProfileImg()"
+            <img class="rounded-circle mx-auto d-block shadow-lg" (click)="updateProfileImg()"
                 src="https://ucarecdn.com/{{ profileImg }}/-/scale_crop/200x200/center/" title="change image"/>
         </div>
     </div>
@@ -11,7 +11,7 @@
             <div class="input-group shadow">
                 <span class="input-group-text bg-light border-0">Username</span>
                 <input type="text" class="form-control p-3 border-0" placeholder="{{ username }}"
-                    [(ngModel)]="username" />
+                    [(ngModel)]="username"/>
             </div>
         </div>
         <div class="col-md-7 mt-3">
@@ -25,7 +25,7 @@
             <div class="input-group shadow">
                 <span class="input-group-text bg-light border-0">Biografie</span>
                 <input type="text" class="form-control p-3 border-0" placeholder="{{ bio }}"
-                    [(ngModel)]="bio" />
+                    [(ngModel)]="bio"/>
             </div>
         </div>
         <div class="col-md-7 mt-3">

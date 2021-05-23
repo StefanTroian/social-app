@@ -13,11 +13,11 @@ import { UserService } from '../user.service';
 export class EditProfileComponent implements OnInit {
 
   mainUser: AngularFirestoreDocument
-  email
-  profileImg
-  username
-  status
-  bio
+  email: string = ""
+  profileImg: string = ""
+  username: string = ""
+  status: string = ""
+  bio: string = ""
   busy: boolean = true
 
   @ViewChild('myFileBtn') myFileBtn: {
@@ -30,17 +30,17 @@ export class EditProfileComponent implements OnInit {
     private afstore: AngularFirestore,
     private router: Router,
     private loading: LoadingService
-  ) { 
+  ) {
+
     this.mainUser = afstore.doc(`users/${user.getUID()}`)
     this.mainUser.valueChanges().subscribe(event => {
       this.email = event.email,
-      this.profileImg = event.profileImg,
-      this.username = event.username,
-      this.status = event.status,
-      this.bio = event.bio
+        this.profileImg = event.profileImg,
+        this.username = event.username,
+        this.status = event.status,
+        this.bio = event.bio
     })
 
-    //sub destroy
   }
 
   ngOnInit(): void {
@@ -57,33 +57,38 @@ export class EditProfileComponent implements OnInit {
   uploadProfileImg(event) {
     const files = event.target.files
     const data = new FormData()
-    data.append('file',files[0])
-    data.append('UPLOADCARE_STORE','1')
-    data.append('UPLOADCARE_PUB_KEY','e0b9c34c13347c16e6f9')
+    data.append('file', files[0])
+    data.append('UPLOADCARE_STORE', '1')
+    data.append('UPLOADCARE_PUB_KEY', 'e0b9c34c13347c16e6f9')
 
 
     this.http.post('https://upload.uploadcare.com/base/', data).
-    subscribe(event => {
+      subscribe(event => {
 
-      const uuid = event['file']
-      this.mainUser.update({
-        profileImg: uuid
+        const uuid = event['file']
+        this.mainUser.update({
+          profileImg: uuid
+        })
+
       })
-
-    })
   }
 
 
   updateProfile() {
 
-    this.mainUser.update({
-      username: this.username,
-      status: this.status,
-      bio: this.bio
-    }).then(() => this.router.navigate(['/profile'])).then(() => {
+    if (this.username) {
+      this.mainUser.update({username: this.username})
+    }
+    if (this.status) {
+      this.mainUser.update({status: this.status})
+    }
+    if (this.bio) {
+      this.mainUser.update({bio: this.bio})
+    }
+    this.router.navigate(['/profile']).then(() => {
       this.loading.changeStatus(true)
     })
-
+    
   }
 
 }

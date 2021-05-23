@@ -1,27 +1,28 @@
 <div *ngIf="!busy" class="container mt-5">
-    <div class="row justify-content-center m-5" *ngIf="email">
-        <div class="col-md-3">
-            <img *ngIf="status == 'single'" class="rounded-circle" style="border: 4px solid #00c519;" src="https://ucarecdn.com/{{ profileImg }}/-/scale_crop/200x200/center/" />
-            <img *ngIf="status == 'complicated'" class="rounded-circle" style="border: 4px solid #fbb900;" src="https://ucarecdn.com/{{ profileImg }}/-/scale_crop/200x200/center/" />
-            <img *ngIf="status == 'relationship'" class="rounded-circle" style="border: 4px solid #c80303;" src="https://ucarecdn.com/{{ profileImg }}/-/scale_crop/200x200/center/" />
+    <div class="row m-5 pb-5" style="border-bottom: 1px solid lightgray;" *ngIf="email">
+        <div class="col-md-5 mb-3">
+            <img *ngIf="status == 'single'" class="rounded-circle mx-auto d-block shadow-lg" style="border: 4px solid #00c519;" src="https://ucarecdn.com/{{ profileImg }}/-/scale_crop/200x200/center/" />
+            <img *ngIf="status == 'complicated'" class="rounded-circle mx-auto d-block shadow-lg" style="border: 4px solid #fbb900;" src="https://ucarecdn.com/{{ profileImg }}/-/scale_crop/200x200/center/" />
+            <img *ngIf="status == 'relationship'" class="rounded-circle mx-auto d-block shadow-lg" style="border: 4px solid #c80303;" src="https://ucarecdn.com/{{ profileImg }}/-/scale_crop/200x200/center/" />
+            <img *ngIf="!status" class="rounded-circle mx-auto d-block shadow-lg" src="https://ucarecdn.com/{{ profileImg }}/-/scale_crop/200x200/center/" />
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="row">
-                <div class="col-md-6">
-                    <h2 class="">{{ username | lowercase }}</h2>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn shadow p-2" (click)="goToEdit()">Edit Profile</button>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn shadow p-2" (click)="logout()">Logout</button>
-                </div>
+                <h2>{{ username | lowercase }}</h2>    
             </div>
-            <div class="col">
-                <p class="">{{ email }}</p>
+            <div class="row">
+                <p>{{ email }}</p>
             </div>
-            <div class="col">
-                <p class="">{{ bio }}</p>
+            <div class="row">
+                <p>{{ bio }}</p>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn shadow p-2 w-100" (click)="goToEdit()">Edit Profile</button>
+                </div>
+                <div class="col">
+                    <button class="btn shadow p-2 w-100" (click)="logout()">Logout</button>
+                </div>
             </div>
         </div>
     </div>
@@ -30,6 +31,9 @@
         <div class="card col-md-4 p-0" *ngFor="let post of posts" (click)="goTo(post)">
             <img src="https://ucarecdn.com/{{ post }}/-/scale_crop/200x200/center/">
         </div>
+    </div>
+    <div *ngIf="!posts" class="text-center">
+        <p>No posts available</p>
     </div>
 
 </div>

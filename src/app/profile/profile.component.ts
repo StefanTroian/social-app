@@ -15,11 +15,11 @@ export class ProfileComponent implements OnInit {
   userPosts
   mainUser: AngularFirestoreDocument
   posts
-  email
-  username
-  status
-  bio
-  profileImg
+  email: string = ""
+  username: string = ""
+  status: string = ""
+  bio: string = ""
+  profileImg: string = ""
   busy: boolean = true
 
   constructor(

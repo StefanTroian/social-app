@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
           uid: res.user.uid
         })
 
-        this.router.navigate(['/login']).then(() => {
+        this.router.navigate(['/feed']).then(() => {
           this.loading.changeStatus(true)
         });  
 

@@ -1,14 +1,14 @@
-<div *ngIf="!busy" class="container">
-    <div class="row bg-white p-2 sticky-top rounded-bottom">
-        <div class="col">
-            <h2>RoundApp</h2>
-        </div>
-        <div class="col d-flex justify-content-end">
-            <img class="shadow-lg rounded-circle" style="height: 50px;" src="https://ucarecdn.com/{{ profileImg }}/"/>
-        </div>
+<div *ngIf="!busy" class="nav p-2 shadow sticky-top bg-white">
+    <div class="col ms-5">
+        <p class="ms-5 mb-0 text-center" style="font-size: 34px;">RoundApp</p>
     </div>
-    <div class="row justify-content-center mt-3">
-        <div class="card col-md-7 p-0 m-3" *ngFor="let post of posts" (click)="goTo(post.id)">
+    <div class="col" *ngIf="profileImg">
+        <img class="shadow-lg rounded-circle mx-auto d-block" style="height: 50px;" src="https://ucarecdn.com/{{ profileImg }}/"/>
+    </div>
+</div>
+<div *ngIf="!busy" class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="card col-md-9 col-xs-8 col-lg-7 p-0 m-3 shadow-lg" *ngFor="let post of posts" (click)="goTo(post.id)">
             <div class="card-header">
                 {{ post.author }}
             </div>
