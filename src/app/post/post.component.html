@@ -1,0 +1,17 @@
+<div *ngIf="!busy" class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="card col-md-8 col-lg-4 col-xs-8 p-0" *ngIf="post as postData">
+            <div class="card-header bg-white">{{ postData.author }}</div>
+            <img src="https://ucarecdn.com/{{ postID }}/-/preview/{{ effect }}">
+            <div class="card-body">
+                <div class="row">
+                    <p class="" (click)="toggleLike()">
+                        <i class="material-icons" style="color: {{ likeColor }}">whatshot</i>
+                            <span class="">{{ postData.likes.length }}</span>
+                    </p>
+                    <span class="">{{ postData.desc }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div *ngIf="!busy" class="container">
+
+    <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)" class="my-file-btn" #myFileBtn />
+    <div class="container" *ngIf="!imageURL">
+        <div class="row" style="margin-top: 40vh;">
+            <div class="col d-flex justify-content-center justify-items-center">
+                <button class="btn btn-primary" *ngIf="!imageURL" (click)="uploadFile()">Upload File</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" *ngIf="imageURL">
+        <div class="row justify-content-center">
+            <div class="card col-md-5 mt-5" *ngIf="imageURL">
+                <img *ngIf='imageURL' src="https://ucarecdn.com/{{ imageURL }}/-/preview/{{ activeEffect }}" />
+            </div>
+            <div class="col-md-5 mt-5">
+                <input type="text" class="form-control p-3" placeholder="Enter some description"
+                    [(ngModel)]="description" />
+                <div>
+                    <button class="btn shadow w-100 mt-3 mb-3 p-3" (click)="createPost()">Post image</button>
+                </div>
+                <div class="overflow-auto d-flex" style="height: 60vh;">
+                    <div class="row">
+                        <div class="card col-md-6" *ngFor="let effect of effects" (click)="setFilter(effect)">
+                            <img src="https://ucarecdn.com/{{ imageURL }}/{{ scaleCrop }}/{{ effect }}/">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

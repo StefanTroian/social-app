@@ -1,0 +1,26 @@
+<div *ngIf="!busy" class="container">
+    <div class="row bg-white p-2 sticky-top rounded-bottom">
+        <div class="col">
+            <h2>RoundApp</h2>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <img class="shadow-lg rounded-circle" style="height: 50px;" src="https://ucarecdn.com/{{ profileImg }}/"/>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="card col-md-7 p-0 m-3" *ngFor="let post of posts" (click)="goTo(post.id)">
+            <div class="card-header">
+                {{ post.author }}
+            </div>
+            <img src="https://ucarecdn.com/{{ post.id }}/{{ post.effect }}/-/scale_crop/200x200/center/" />
+            <div class="card-body">
+                <div class="row">
+                    <p class="card-text">{{ post.likes.length }} aprecieri</p>
+                </div>
+                <div class="row">
+                    <span class="card-text">{{ post.desc }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

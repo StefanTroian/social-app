@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.my-border-gradient {
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 1.5px;
+    border-image-source: linear-gradient(to right, #c80303, #d94800, #e87000, #f39500, #fbb900, #f0c700, #e2d500, #d2e200, #afdc00, #89d500, #5dcd01, #00c519);
+}
+
+.my-nav-bar {
+    box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
+}
+
+.my-file-btn {
+    opacity: 0;
+    position: absolute;
+    top: -100em;
+}

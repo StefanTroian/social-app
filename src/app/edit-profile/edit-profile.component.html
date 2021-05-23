@@ -1,0 +1,35 @@
+<div *ngIf="!busy" class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-2">
+            <input type="file" class="my-file-btn" #myFileBtn (change)="uploadProfileImg($event)" />
+            <img class="rounded-circle" (click)="updateProfileImg()"
+                src="https://ucarecdn.com/{{ profileImg }}/-/scale_crop/200x200/center/" title="change image"/>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-7 mt-3">
+            <div class="input-group shadow">
+                <span class="input-group-text bg-light border-0">Username</span>
+                <input type="text" class="form-control p-3 border-0" placeholder="{{ username }}"
+                    [(ngModel)]="username" />
+            </div>
+        </div>
+        <div class="col-md-7 mt-3">
+            <select class="form-select border-0 shadow p-3" aria-label="Default select example" [(ngModel)]="status">
+                <option selected value="single">Single</option>
+                <option value="complicated">Complicated</option>
+                <option value="relationship">Relationship</option>
+            </select>
+        </div>
+        <div class="col-md-7 mt-3">
+            <div class="input-group shadow">
+                <span class="input-group-text bg-light border-0">Biografie</span>
+                <input type="text" class="form-control p-3 border-0" placeholder="{{ bio }}"
+                    [(ngModel)]="bio" />
+            </div>
+        </div>
+        <div class="col-md-7 mt-3">
+            <button class="btn shadow p-3 w-100" (click)="updateProfile()">Update Profile</button>
+        </div>
+    </div>
+</div>
